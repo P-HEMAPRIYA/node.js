@@ -1,0 +1,20 @@
+version: '3'
+services:
+  nodejs-app:
+    image: node:14 # Use the Node.js image from Docker Hub
+    container_name: nodejs-app
+    working_dir: /app
+    volumes:
+      - ./app:/app
+    ports:
+      - "3000:3000"
+    command: npm start # Change this to your Node.js startup command
+
+  mongodb:
+    image: mongo:latest # Use the official MongoDB image
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example_password # Change this to your desired password
